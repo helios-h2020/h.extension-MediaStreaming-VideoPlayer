@@ -1,5 +1,5 @@
 # MediaStreaming - VideoPlayer
- 
+
 Repository for the VideoPlayer of Media Streaming Module (T3.3).
 
 ### Video Player:
@@ -70,11 +70,11 @@ To request Nexus username and password, contact with: `carlosalberto.martinedo@a
 
 ### How to deploy a new version of the dependencies ###
 
-Let's say that we want to deploy a new version of the videocall project. This project is a dependency of MediaStreaming.
-For Continuous Integration we use Jenkins. It deploys the configured projects (e.g., videocall) in different jobs,
+Let's say that we want to deploy a new version of the videoplayer project. This project is a dependency of MediaStreaming.
+For Continuous Integration we use Jenkins. It deploys the configured projects (e.g., videoplayer) in different jobs,
 and the results are libraries packaged like AAR (Android ARchive). These packaged libraries are upload to Nexus and in this way,
 they are available to build the projects that depend on them (e.g., MediaStreaming).
-In the videocall example, Jenkins jobs generate automatically and aar library and store it at the Nexus repository to make it available.
+In the videoplayer example, Jenkins jobs generate automatically and aar library and store it at the Nexus repository to make it available.
 
 Jenkins is the tool deployed by Atos (WP6 leader) in HELIOS to automate the generation of APKs, joining all the project modules.
 Due to the need of managing the dependencies, Atos has selected additional tools, as explained in this document.
@@ -87,8 +87,8 @@ To request Jenkins username and password, contact with: `carlosalberto.martinedo
 ### How to use the dependencies ###
 
 To use the dependency in `build.gradle` of the "father" project, you should specify the last version available in Nexus, related to the last Jenkins's deploy.
-For example, to declare the dependency on the videocall module and the respective version:
+For example, to declare the dependency on the videoplayer module and the respective version:
 
-`implementation 'eu.h2020.heliosMediastreaming.videocall:videocall:1.0.14'`
+`implementation 'eu.h2020.helios_social.modules.videoplayer:videoplayer:1.0.19'`
 
 For more info review: `https://scm.atosresearch.eu/ari/helios_group/generic-issues/blob/master/multiprojectDependencies.md`

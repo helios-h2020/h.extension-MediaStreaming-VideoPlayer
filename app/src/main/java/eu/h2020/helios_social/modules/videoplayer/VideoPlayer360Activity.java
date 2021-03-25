@@ -24,9 +24,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
+import android.view.Window;
+import android.view.WindowManager;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.exoplayer2.C;
@@ -39,7 +39,6 @@ import com.google.android.exoplayer2.source.ProgressiveMediaSource;
 import com.google.android.exoplayer2.source.hls.HlsMediaSource;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.ui.PlayerView;
-import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
@@ -47,12 +46,10 @@ import com.google.android.exoplayer2.util.Util;
 /**
  * A fullscreen activity to play audio or video streams.
  */
-public class VideoPlayerActivity extends AppCompatActivity implements View.OnClickListener {
+public class VideoPlayer360Activity extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String EXTRA_MESSAGE = "eu.h2020.helios_social.mudules.videoplayer.MESSAGE";
-    public static final String EXTRA_MESSAGE2 = "eu.h2020.helios_social.mudules.videoplayer.MESSAGE";
     private PlaybackStateListener playbackStateListener;
-    private static final String TAG = VideoPlayerActivity.class.getName();
+    private static final String TAG = VideoPlayer360Activity.class.getName();
 
     private PlayerView playerView;
     private SimpleExoPlayer player;
@@ -65,33 +62,23 @@ public class VideoPlayerActivity extends AppCompatActivity implements View.OnCli
 
     private Intent intent;
 
-    private static final int MY_REQUEST_CODE = 42;
+    public static final String BUNDLE_POSITION_PLAYBACK = "BUNDLE_POSITION_PLAYBACK";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video_player);
+
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN); //show the activity in full screen
+
+        setContentView(R.layout.activity_video_player_360);
 
         intent = getIntent();
+        String message = intent.getStringExtra(VideoPlayerActivity.EXTRA_MESSAGE);
+        url = Uri.parse(message);
+        playbackPosition = intent.getLongExtra("POSITION", 0);
 
-        if (intent.getAction() != null) {
-            url = intent.getData();
-        } else {
-            try{
-                String uri = intent.getStringExtra("URI");
-                url = Uri.parse(uri);
-            }catch (Exception ex){
-                Log.i("VideoPlayer", "Error Parsing Intent URI: " + ex.getMessage());
-            }
-        }
-
-        if(url == null){
-            url = Uri.parse(getString(R.string.hls_uri));
-
-        }
-
-        //playerView = findViewById(R.id.video_view);
-        playerView = findViewById(R.id.video_view);
+        playerView = findViewById(R.id.video_view_vr);
 
         playbackStateListener = new PlaybackStateListener();
     }
@@ -119,6 +106,7 @@ public class VideoPlayerActivity extends AppCompatActivity implements View.OnCli
         MediaSource mediaSource = buildMediaSource(uri, extension);
 
         player.setPlayWhenReady(playWhenReady);
+        //Initialize video with the position received from the Main Activity
         player.seekTo(currentWindow, playbackPosition);
         player.addListener(playbackStateListener);
         player.prepare(mediaSource, false, false);
@@ -226,7 +214,7 @@ public class VideoPlayerActivity extends AppCompatActivity implements View.OnCli
                 case ExoPlayer.STATE_ENDED:
                     stateString = "ExoPlayer.STATE_ENDED     -";
                     Intent result = new Intent("com.helios.RESULT_ACTION");
-                    setResult(VideoPlayerActivity.RESULT_OK, result);
+                    setResult(VideoPlayer360Activity.RESULT_OK, result);
                     finish();
                     break;
                 default:
@@ -238,19 +226,11 @@ public class VideoPlayerActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == MY_REQUEST_CODE && resultCode == RESULT_OK) {
-            playbackPosition = data.getLongExtra(VideoPlayer360Activity.BUNDLE_POSITION_PLAYBACK, 0);
-        }
+    public void backToMain(View view) {
+        Intent intent = new Intent();
+        intent.putExtra(BUNDLE_POSITION_PLAYBACK, player.getCurrentPosition());
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
-    public void changeTo360(View view) {
-        Intent intent = new Intent(this, VideoPlayer360Activity.class);
-        intent.putExtra(EXTRA_MESSAGE, url.toString());
-        intent.putExtra("POSITION", player.getCurrentPosition());
-        startActivityForResult(intent, MY_REQUEST_CODE);
-    }
 }

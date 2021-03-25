@@ -35,6 +35,32 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".VideoPlayer360Activity"
+            android:parentActivityName=".VideoPlayerActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".VideoPlayerActivity" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="video/*" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Accepts URIs that begin with http -->
+                <data android:scheme="http" />
+                <!-- Accepts URIs that begin with https -->
+                <data android:scheme="https" />
+                <!-- Accepts local files -->
+                <data android:scheme="content" />
+                <data android:scheme="file" />
+            </intent-filter>
+
+        </activity>
+
     </application>
 
 </manifest>
