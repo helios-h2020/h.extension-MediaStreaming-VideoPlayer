@@ -5,7 +5,7 @@ Repository for the VideoPlayer of Media Streaming Module (T3.3).
 ### Video Player:
 This functionality provides a polyvalent video player built with ExoPlayer. By default, the player uses the url provided in the values/strings.xml file.
 
-* HLS_URI: https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8
+* HLS_URI: `https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8`
 
 All these values can be modified in the `values/strings.xml` file.
 
