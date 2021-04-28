@@ -13,7 +13,7 @@ To start the Video Player (e.g. using the MediaStreaming App to call this extens
 
 MediaStreaming App: https://github.com/helios-h2020/h.app-MediaStreaming
 
-<img src="https://raw.githubusercontent.com/helios-h2020/h.app-MediaStreaming-LiveVideoStreaming/master/doc/player.PNG" alt="VideoPlayer">
+<img src="https://raw.githubusercontent.com/helios-h2020/h.app-MediaStreaming-LiveVideoStreaming/master/doc/player.png" alt="VideoPlayer">
 
 ### How to use Video Player:
 The url of the video can be passed as a string extra with name 'URI'
