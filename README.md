@@ -41,6 +41,22 @@ The url of the video can be passed as a string extra with name 'URI'
         MainActivity.this.startActivity(videoPlayerIntent);
 ```
 
+### How to Develop
+
+- Install Git in your computer: https://github.com/git-guides/install-git
+
+- Choose a directory from your computer and download with Git the code using the link provided in this page:
+
+<img src="https://raw.githubusercontent.com/helios-h2020/h.extension-MediaStreaming-VideoPlayer/master/doc/github.PNG" alt="VideoPlayer github">
+
+`git clone https://github.com/helios-h2020/h.extension-MediaStreaming-VideoPlayer.git`
+
+- Open Android Studio and open an existing project from the directory of your code downloaded. To install Android Studio follow the next link: https://developer.android.com/studio/install)
+
+- To generate an aar file from the code, select the Build option in the Menu Bar, select ReBuild project or choose Make Project icon as you can see in the picture. Once generated, you can find the file in app/build/options/aar (you can rename the file as you like):
+
+<img src="https://raw.githubusercontent.com/helios-h2020/h.extension-MediaStreaming-VideoPlayer/master/doc/build.PNG" alt="VideoPlayer build aar">
+
 ### Request permissions
 There are non additional permissions needed.
 
