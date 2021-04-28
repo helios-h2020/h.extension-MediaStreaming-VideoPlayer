@@ -3,11 +3,17 @@
 Repository for the VideoPlayer of Media Streaming Module (T3.3).
 
 ### Video Player:
-This functionality provides a polyvalent video player built with ExoPlayer. By default, the player uses the url provided in the values/strings.xml file.
+This functionality provides a polyvalent video player built with ExoPlayer. By default, the player uses the url provided in the values/strings.xml file located in the code of your application.
 
 * HLS_URI: `https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8`
 
 All these values can be modified in the `values/strings.xml` file.
+
+To start the Video Player (e.g. using the MediaStreaming App to call this extension) it is necessary to introduce the url:
+
+MediaStreaming App: https://github.com/helios-h2020/h.app-MediaStreaming
+
+<img src="https://raw.githubusercontent.com/helios-h2020/h.app-MediaStreaming-LiveVideoStreaming/master/doc/player.PNG" alt="VideoPlayer">
 
 ### How to use Video Player:
 The url of the video can be passed as a string extra with name 'URI'
@@ -92,3 +98,36 @@ For example, to declare the dependency on the videoplayer module and the respect
 `implementation 'eu.h2020.helios_social.modules.videoplayer:videoplayer:1.0.21'`
 
 For more info review: `https://scm.atosresearch.eu/ari/helios_group/generic-issues/blob/master/multiprojectDependencies.md`
+
+### How to use the dependencies locally ###
+
+If you want to include the .aar file generated as a dependency in the application whitout use Nexus dependencies:
+
+- Go to your application code and create libs folder inside app folder:
+
+<img src="https://raw.githubusercontent.com/helios-h2020/h.app-MediaStreaming/master/doc/libs.PNG" alt="libs folder">
+
+- Open build.gradle at Project level and add flatDir{dirs 'libs'} :
+
+<img src="https://raw.githubusercontent.com/helios-h2020/h.app-MediaStreaming/master/doc/libs_gradle.PNG" alt="Project build.gradle">
+
+```
+allprojects {
+   repositories {
+      jcenter()
+      flatDir {
+        dirs 'libs'
+      }
+   }
+}
+```
+
+- Open build.gradle at app level and add .aar file:
+
+<img src="https://raw.githubusercontent.com/helios-h2020/h.app-MediaStreaming/master/doc/gradle_app.PNG" alt="app build.gradle">
+
+```
+dependencies {
+     compile(name:'file_name', ext:'aar')
+}
+```
