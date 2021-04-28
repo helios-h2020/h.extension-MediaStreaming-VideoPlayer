@@ -25,6 +25,13 @@ You can switch to immersive view using the icon:
 
 <img src="https://raw.githubusercontent.com/helios-h2020/h.extension-MediaStreaming-VideoPlayer/master/doc/icon360.PNG" alt="VideoPlayer 360 icon">
 
+Aspect of the player in immersive view:
+
+<img src="https://raw.githubusercontent.com/helios-h2020/h.extension-MediaStreaming-VideoPlayer/master/doc/360.PNG" alt="VideoPlayer 360 video">
+
+Using the icon we can return to plane view:
+
+<img src="https://raw.githubusercontent.com/helios-h2020/h.extension-MediaStreaming-VideoPlayer/master/doc/iconPlane.PNG" alt="VideoPlayer plane icon">
 
 ### How to use Video Player:
 The url of the video can be passed as a string extra with name 'URI'
