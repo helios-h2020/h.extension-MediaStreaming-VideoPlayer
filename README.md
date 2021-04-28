@@ -23,7 +23,7 @@ After we can see the video:
 
 You can switch to immersive view using the icon:
 
-<img src="https://raw.githubusercontent.com/helios-h2020/h.extension-MediaStreaming-VideoPlayer/master/doc/icon360.png" alt="VideoPlayer 360 icon">
+<img src="https://raw.githubusercontent.com/helios-h2020/h.extension-MediaStreaming-VideoPlayer/master/doc/icon360.PNG" alt="VideoPlayer 360 icon">
 
 
 ### How to use Video Player:
