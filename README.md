@@ -27,7 +27,7 @@ You can switch to immersive view using the icon:
 
 Aspect of the player in immersive view:
 
-<img src="https://raw.githubusercontent.com/helios-h2020/h.extension-MediaStreaming-VideoPlayer/master/doc/360.PNG" alt="VideoPlayer 360 video">
+<img src="https://raw.githubusercontent.com/helios-h2020/h.extension-MediaStreaming-VideoPlayer/master/doc/360.png" alt="VideoPlayer 360 video">
 
 Using the icon we can return to plane view:
 
