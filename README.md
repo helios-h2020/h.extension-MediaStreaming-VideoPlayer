@@ -78,7 +78,7 @@ Also to improve the automation for deploy, versioning and distribution of the pr
 ### How to use the HELIOS Nexus ###
 
 Similar to other dependencies available in Maven Central, Google or others repositories. In this case we specify the Nexus
-repository provided by Atos: `https://builder.helios-social.eu/repository/helios-repository/`
+repository provided by Atos: `https://registry.helios.ari-imet.eu/repository/helios-repository/`
 
 This URL makes the project dependencies available.
 
@@ -90,7 +90,7 @@ The `build.gradle` of the project define the Nexus repository and the credential
 repositories {
         ...
         maven {
-            url "https://builder.helios-social.eu/repository/helios-repository/"
+            url "https://registry.helios.ari-imet.eu/repository/helios-repository/"
             credentials {
                 username = heliosUser
                 password = heliosPassword
@@ -106,7 +106,7 @@ heliosUser=username
 heliosPassword=password
 ```
 
-To request Nexus username and password, contact with: `jordi.hernandezv@atos.net`
+To request Nexus username and password, contact with: `francesco.dandria@atos.net`
 
 ### How to deploy a new version of the dependencies ###
 
@@ -122,7 +122,7 @@ Due to the need of managing the dependencies, Atos has selected additional tools
 After pushing a change to the `master` branch, the maintainer can builds the module by means of the job in the Jenkins interface. GitLab repositories are set to protect
 the `master` branch push and merge for the partner in charge of its module/project (maintainer).
 
-To request Jenkins username and password, contact with: `jordi.hernandezv@atos.net`
+To request Jenkins username and password, contact with: `francesco.dandria@atos.net`
 
 ### How to use the dependencies ###
 
